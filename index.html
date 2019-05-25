@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>testing nelify</title>
+</head>
+<body>
+<pre><code id="data"></code></pre>
+<script>
+  async function callNetlify(){
+    const fetchResult = await fetch('/.netlify/functions/test'),
+        body = await fetchResult.json()
+
+    document.getElementById('data').innerText = JSON.stringify(body)
+
+  }
+
+  callNetlify()
+
+</script>
+</body>
+</html>
