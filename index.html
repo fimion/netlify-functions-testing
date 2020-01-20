@@ -2,20 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>testing nelify</title>
+  <title>testing netlify</title>
 </head>
 <body>
 <pre><code id="data"></code></pre>
 <script>
-  async function callNetlify(){
-    const fetchResult = await fetch('/.netlify/functions/test'),
+  async function callNetlify(path){
+    const fetchResult = await fetch(`/.functions/`),
         body = await fetchResult.json()
 
-    document.getElementById('data').innerText = JSON.stringify(body)
+    document.getElementById('data').innerText += JSON.stringify(body)
+
+    return body
 
   }
 
-  callNetlify()
+  callNetlify('test').then(()=>callNetlify('nested/test'))
 
 </script>
 </body>
