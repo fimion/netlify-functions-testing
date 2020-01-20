@@ -8,12 +8,12 @@
 <pre><code id="data"></code></pre>
 <script>
   async function callNetlify(path){
-    const fetchResult = await fetch(`/.functions/`),
+    const fetchResult = await fetch(`/.functions/${path}`),
         body = await fetchResult.json()
 
     document.getElementById('data').innerText += JSON.stringify(body)
 
-    return body
+    return Promise.resolve(body);
 
   }
 
